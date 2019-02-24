@@ -1,4 +1,6 @@
 # ScrambleJS
+[![](https://data.jsdelivr.com/v1/package/gh/ignatiusmb/scramble.js/badge)](https://www.jsdelivr.com/package/gh/ignatiusmb/scramble.js)
+
 > Scrambling a text and decoding it letter by letter, giving that password-cracking feel on the website
 
 Built with pure JavaScript and :yellow_heart:
@@ -26,6 +28,11 @@ Please refer to [documentation](https://ignatiusmb.github.io/scramble.js) for us
 1. Download [scramble.min.js](https://github.com/ignatiusmb/scramblejs/releases/latest) or use it from cdn provided below
 ```html
 <script src="https://cdn.jsdelivr.net/gh/ignatiusmb/scramble.js@latest/lib/scramble.min.js"></script>
+```
+You can also manually specify the version to use by replacing `latest` with the desired version
+```html
+<script src="https://cdn.jsdelivr.net/gh/ignatiusmb/scramble.js@version/lib/scramble.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ignatiusmb/scramble.js@1.0.0/lib/scramble.min.js"></script>
 ```
 2. Source it to the HTML and simply call the function
 3. `scramble` takes a parameter to run which is a DOM containing the text to scramble and decode
