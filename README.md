@@ -1,10 +1,7 @@
-# ScrambleJS
-[![](https://data.jsdelivr.com/v1/package/gh/ignatiusmb/scramble.js/badge)](https://www.jsdelivr.com/package/gh/ignatiusmb/scramble.js)
-
+# ScrambleJS &middot; [![](https://data.jsdelivr.com/v1/package/gh/ignatiusmb/scramble.js/badge)](https://www.jsdelivr.com/package/gh/ignatiusmb/scramble.js)
 > Scrambling a text and decoding it letter by letter, giving that password-cracking feel on the website
 
 ## Getting Started
-
 | Function |
 |----------|
 | `scramble` |
@@ -31,8 +28,6 @@ scramble(nameTag);
 ```
 4. Use `monospace` fonts for a clean decode
 5. Make sure document is ready before using this or just source it at the bottom before the closing `body` tag
-
-
 
 ### License
 ScrambleJS is [MIT licensed](LICENSE)
