@@ -1,27 +1,10 @@
 body {
-  margin: 0;
   font-family: "Fira Sans", sans-serif;
-  color: #838c95;
 }
 
-a {
-  text-decoration: none;
-  color: white;
-}
-
-a:hover {
+a:hover,
+a:focus {
   color: #444;
-}
-
-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  width: 100%;
-  height: 100vh;
-  text-align: center;
 }
 
 header h1 {
@@ -35,36 +18,9 @@ header h3 {
   margin: 0 0 1rem;
   color: gray;
   font-weight: 400;
+  font-family: "Inconsolata", monospace;
 }
 
 header .github-bar span:not(:last-child) {
   margin-right: 0.5rem;
-}
-
-/* flex-grid ---------------------------------- */
-.width-limiter {
-  width: 90%;
-  max-width: 1024px;
-}
-
-.flex-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 0 auto;
-}
-
-.flex-column {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0 auto;
-}
-
-.between {
-  justify-content: space-between;
-}
-
-.evenly {
-  justify-content: space-evenly;
 }
