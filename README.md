@@ -10,13 +10,10 @@ Please refer to [documentation](https://ignatiusmb.github.io/scramble.js) for us
    - [RichJS](https://github.com/ignatiusmb/rich.js)
 2. Use [scramble.min.js](https://github.com/ignatiusmb/scramble.js/releases/latest) from the cdn provided below
 ```html
-<!-- using latest to always automatically use the latest version -->
-<script src="https://cdn.jsdelivr.net/gh/ignatiusmb/scramble.js@latest/lib/scramble.min.js"></script>
-
-<!-- just specifying the major version to automatically receive bug fixes and non-breaking features -->
+<!-- specify just the major version to automatically receive bug fixes and non-breaking features -->
 <script src="https://cdn.jsdelivr.net/gh/ignatiusmb/scramble.js@2/lib/scramble.min.js"></script>
 
-<!-- specifying the complete version to use for some personal reason(?) -->
+<!-- specify the complete version to use for a specific reason or something personal(?) -->
 <script src="https://cdn.jsdelivr.net/gh/ignatiusmb/scramble.js@2.1.0/lib/scramble.min.js"></script>
 ```
 3. Source it to the HTML and simply call the function(s)
