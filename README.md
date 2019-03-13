@@ -1,4 +1,5 @@
-# ScrambleJS &middot; [![](https://data.jsdelivr.com/v1/package/gh/ignatiusmb/scramble.js/badge?style=rounded)](https://www.jsdelivr.com/package/gh/ignatiusmb/scramble.js)
+# ScrambleJS &middot; [![](https://data.jsdelivr.com/v1/package/gh/ignatiusmb/scramble.js/badge?style=rounded)](https://www.jsdelivr.com/package/gh/ignatiusmb/scramble.js) [![HitCount](http://hits.dwyl.io/ignatiusmb/scramble.js.svg)](http://hits.dwyl.io/ignatiusmb/scramble.js)
+
 > Scrambling a text and decoding it letter by letter, giving that password-cracking feel on the website
 
 ## Getting Started
