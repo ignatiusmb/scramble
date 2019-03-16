@@ -3,3 +3,7 @@ for (let i = 0; i < scrambleGroup.length; i++) {
   const group = scrambleGroup[i].getElementsByTagName("span");
   successiveScramble(group);
 }
+
+RichAJAX().get("/dist/footer.html", (data) => {
+  document.getElementsByTagName("footer")[0].insertAdjacentHTML("beforeend", data.responseText);
+});
