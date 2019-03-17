@@ -4,6 +4,6 @@ for (let i = 0; i < scrambleGroup.length; i++) {
   successiveScramble(group);
 }
 
-RichAJAX().get("/dist/footer.html", (data) => {
+RichAJAX().get("https://cdn.jsdelivr.net/gh/ignatiusmb/ignatiusmb.github.io@1/dist/footer.html", (data) => {
   document.getElementsByTagName("footer")[0].insertAdjacentHTML("beforeend", data.responseText);
 });
