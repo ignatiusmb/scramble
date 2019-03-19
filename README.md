@@ -15,7 +15,7 @@ Please refer to [documentation](https://ignatiusmb.github.io/scramble.js) for us
 <script src="https://cdn.jsdelivr.net/gh/ignatiusmb/scramble.js@2/lib/scramble.min.js"></script>
 
 <!-- specify the complete version to use for a specific reason or something personal(?) -->
-<script src="https://cdn.jsdelivr.net/gh/ignatiusmb/scramble.js@2.1.0/lib/scramble.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ignatiusmb/scramble.js@2.1.1/lib/scramble.min.js"></script>
 ```
 3. Source it to the HTML and simply call the function(s)
 4. Use `monospace` fonts for a clean decode with titles
