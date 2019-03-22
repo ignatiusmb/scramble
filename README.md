@@ -27,7 +27,7 @@ ScrambleJS is [MIT licensed](LICENSE)
 <p align="center">
   <a href="https://ignatiusmb.github.io">ignatiusmb.io</a>
   &middot;
-  <a href="www.imbagus.com">imbagus.com</a>
+  <a href="https://www.imbagus.com">imbagus.com</a>
   &middot;
   <a href="https://github.com/ignatiusmb">GitHub</a>
   &middot;
