@@ -1,29 +1,35 @@
-# ScrambleJS &middot; [![](https://img.shields.io/bundlephobia/min/@ignatiusmb/scramble.svg?label=minified%20size&style=popout)]() [![](https://img.shields.io/npm/v/@ignatiusmb/scramble.svg?style=popout)](https://www.npmjs.com/package/@ignatiusmb/scramble) [![](https://data.jsdelivr.com/v1/package/gh/ignatiusmb/scramble.js/badge?style=rounded)](https://www.jsdelivr.com/package/gh/ignatiusmb/scramble.js)
+# ScrambleJS &middot; [![](https://img.shields.io/bundlephobia/minzip/@ignatiusmb/scramble.svg?label=minzipped&style=popout)](https://github.com/ignatiusmb/scramble.js) [![](https://img.shields.io/npm/v/@ignatiusmb/scramble.svg?style=popout)](https://www.npmjs.com/package/@ignatiusmb/scramble) [![](https://data.jsdelivr.com/v1/package/gh/ignatiusmb/scramble.js/badge?style=rounded)](https://www.jsdelivr.com/package/gh/ignatiusmb/scramble.js)
 
-> Scrambling a text and decoding it letter by letter, giving that password-cracking feel on the website
+> Scramble your texts and decodes it
 
 ## Getting Started
 
 Please refer to [documentation](https://ignatiusmb.github.io/scramble.js) for use cases
 
-## Usage
-
-:warning: **This is meant to be used with short texts like a name, memory caching for long texts hasn't been tested** :construction:
-
-1. Add the dependencies
-   - [RichJS](https://github.com/ignatiusmb/rich.js)
-2. Use [scramble.min.js](https://github.com/ignatiusmb/scramble.js/releases/latest) from the cdn provided below
+```
+npm install @ignatiusmb/scramble
+```
 
 ```html
-<!-- specify just the major version to automatically receive bug fixes and non-breaking features -->
-<script src="https://cdn.jsdelivr.net/gh/ignatiusmb/scramble.js@2/lib/scramble.min.js"></script>
-
-<!-- specify the complete version to use for a specific reason or something personal(?) -->
 <script src="https://cdn.jsdelivr.net/gh/ignatiusmb/scramble.js@2.1.1/lib/scramble.min.js"></script>
 ```
 
-3. Source it to the HTML and simply call the function(s)
-4. Use `monospace` fonts for a clean decode with titles
+### Usage
+
+```js
+const scramble = require('@ignatiusmb/scramble');
+
+scramble({
+  el: '.random-css__elements'
+});
+```
+
+1. Add the dependencies
+   - [RichJS](https://github.com/ignatiusmb/rich.js)
+
+Tips
+
+- Use `monospace` fonts for a clean decode
 
 ### License
 
