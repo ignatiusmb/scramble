@@ -24,7 +24,9 @@ npm install @ignatiusmb/scramble
 ### Or get it through a CDN
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/ignatiusmb/scramble.js@2.1.2/lib/scramble.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ignatiusmb/scramble.js/lib/scramble.min.js"></script>
+<!-- Load an exact version of Scramble.js with automatic patches -->
+<script src="https://cdn.jsdelivr.net/gh/ignatiusmb/scramble.js@2.1/lib/scramble.min.js"></script>
 ```
 
 ---
