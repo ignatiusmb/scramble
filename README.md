@@ -1,8 +1,12 @@
 # ScrambleJS &middot; [![](https://img.shields.io/bundlephobia/minzip/@ignatiusmb/scramble.svg?label=minzipped&style=popout)](https://github.com/ignatiusmb/scramble.js) [![](https://img.shields.io/npm/v/@ignatiusmb/scramble.svg?style=popout)](https://www.npmjs.com/package/@ignatiusmb/scramble) [![](https://data.jsdelivr.com/v1/package/gh/ignatiusmb/scramble.js/badge?style=rounded)](https://www.jsdelivr.com/package/gh/ignatiusmb/scramble.js)
 
-## GitHub Pages Branch for Documentation and Examples
+Branch for [Homepage](https://scramble.js.org)
 
-ScrambleJS is [MIT licensed](LICENSE)
+---
+
+<h3 align="center">
+ScrambleJS is <a href=LICENSE>MIT licensed</a>
+</h3>
 
 ---
 
