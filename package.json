@@ -1,0 +1,13 @@
+{
+  "name": "@ignatiusmb/scramble",
+  "version": "2.1.4",
+  "description": "Scrambles text nodes",
+  "license": "MIT",
+  "repository": "ignatiusmb/scramble.js",
+  "main": "lib/scramble.js",
+  "keywords": [
+    "scramble",
+    "random",
+    "ignatiusmb"
+  ]
+}
