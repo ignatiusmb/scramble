@@ -137,6 +137,23 @@ main.appendChild(
   ])
 );
 
+const reset = document.createElement('a');
+reset.textContent = 'Reset';
+reset.id = 'reset';
+reset.addEventListener('click', () => {
+  while (main.lastChild && main.childElementCount > 0) main.removeChild(main.firstChild);
+  main.appendChild(
+    scrCreateSection('disorder', 'continuous text disorder', 'this text is in disorder', [
+      'original',
+      'process',
+      'start',
+      'stop'
+    ])
+  );
+  main.insertAdjacentElement('afterbegin', reset);
+});
+main.insertAdjacentElement('afterbegin', reset);
+
 fetch('https://cdn.jsdelivr.net/gh/ignatiusmb/ignatiusmb.github.io/dist/footer.html')
   .then(response => {
     return response.text();
