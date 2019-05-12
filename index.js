@@ -127,17 +127,15 @@ const scrCreateSection = (name, titleText, exampleText, buttonNames) => {
   return section;
 };
 
+const main = document.getElementById('sections');
 const reset = document.createElement('a');
-reset.textContent = 'Reset';
 reset.id = 'reset';
 reset.addEventListener('click', () => {
   while (main.lastChild && main.childElementCount > 0) main.removeChild(main.firstChild);
   addSections();
-  main.insertAdjacentElement('afterbegin', reset);
 });
 
 const addSections = () => {
-  const main = document.getElementById('sections');
   main.appendChild(
     scrCreateSection('disorder', 'continuous text disorder', 'this text is in disorder', [
       'original',
