@@ -148,7 +148,7 @@ aside.running {
 }
 
 .demo .buttons a:not(:last-child) {
-  margin-right: 2.5em;
+  margin-right: 2em;
 }
 
 .demo .clog-header {
@@ -211,4 +211,14 @@ code {
   font-family: 'Fira Sans', monospace;
   color: #ccc;
   background: #2d2d2d;
+}
+
+@media only screen and (max-width: 480px) {
+  header h1 {
+    font-size: 4em;
+  }
+
+  header h3 {
+    font-size: 1em;
+  }
 }
