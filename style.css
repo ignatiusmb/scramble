@@ -17,6 +17,10 @@ body {
   font-family: 'Rubik', sans-serif;
 }
 
+#reset::before {
+  content: 'Reset'
+}
+
 #reset:hover {
   background-color: #f9d324;
   color: black;
