@@ -149,7 +149,7 @@ const addSections = () => {
 
 addSections();
 
-fetch('https://cdn.jsdelivr.net/gh/ignatiusmb/ignatiusmb.github.io/dist/footer.html')
+fetch('https://cdn.jsdelivr.net/gh/ignatiusmb/api/html/footer.html')
   .then(response => {
     return response.text();
   })
