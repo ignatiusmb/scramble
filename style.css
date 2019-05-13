@@ -1,5 +1,5 @@
 body {
-  font-family: "Fira Sans", sans-serif;
+  font-family: 'Fira Sans', sans-serif;
 }
 
 #reset {
@@ -18,7 +18,7 @@ body {
 }
 
 #reset::before {
-  content: 'Reset'
+  content: 'Reset';
 }
 
 #reset:hover {
@@ -37,7 +37,7 @@ header h3 {
   margin: 0 0 1em;
   color: gray;
   font-weight: 400;
-  font-family: "Inconsolata", monospace;
+  font-family: 'Inconsolata', monospace;
 }
 
 header .github-bar span:not(:last-child) {
@@ -90,7 +90,7 @@ section .demo {
 }
 
 aside.finished::before {
-  content: "finished";
+  content: 'finished';
 }
 
 aside.finished {
@@ -100,7 +100,7 @@ aside.finished {
 }
 
 aside.idle::before {
-  content: "idle";
+  content: 'idle';
 }
 
 aside.idle {
@@ -110,7 +110,7 @@ aside.idle {
 }
 
 aside.running::before {
-  content: "running";
+  content: 'running';
 }
 
 aside.running {
@@ -191,11 +191,11 @@ aside.running {
 }
 
 .demo .clog code::before {
-  content: '$ '
+  content: '$ ';
 }
 
 .demo .clog code {
-  font-family: "Ubuntu Mono", monospace;
+  font-family: 'Ubuntu Mono', monospace;
 }
 
 pre {
@@ -212,6 +212,10 @@ code {
   font-family: 'Fira Sans', monospace;
   color: #ccc;
   background: #2d2d2d;
+}
+
+footer span {
+  margin-bottom: 0.5em;
 }
 
 footer span a {
