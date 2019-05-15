@@ -37,7 +37,7 @@ const createTerminal = name => {
   return { window: terminal, name: name, head: header, body: body }
 }
 
-const scrCreateButtons = (element, terminal, buttons) => {
+const scrCreateButtons = (element, status, terminal, buttons) => {
   const buttonContainer = document.createElement('div')
   switch (terminal.name) {
     case 'jumble':
@@ -112,7 +112,7 @@ const scrCreateSection = (name, titleText, exampleText, buttonNames) => {
 
   const terminal = createTerminal(name)
 
-  const buttons = scrCreateButtons(example, terminal, buttonNames)
+  const buttons = scrCreateButtons(example, status, terminal, buttonNames)
   buttons.className = 'buttons'
   divDemo.appendChild(buttons)
 
