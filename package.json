@@ -6,10 +6,15 @@
   "license": "MIT",
   "repository": "ignatiusmb/scramble",
   "homepage": "https://scramble.js.org",
-  "main": "lib/scramble.js",
   "keywords": [
     "scramble",
     "random",
     "ignatiusmb"
+  ],
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.js",
+    "lib/"
   ]
 }
