@@ -1,8 +1,8 @@
-# ScrambleJS &middot; [![](https://img.shields.io/bundlephobia/minzip/@ignatiusmb/scramble.svg?label=minzip&style=popout)]()&nbsp;[![](https://img.shields.io/npm/v/@ignatiusmb/scramble.svg?style=popout)](https://www.npmjs.com/package/@ignatiusmb/scramble)&nbsp;[![](https://data.jsdelivr.com/v1/package/gh/ignatiusmb/scramble.js/badge?style=rounded)](https://www.jsdelivr.com/package/gh/ignatiusmb/scramble.js)
+# Scramble &middot; [![](https://img.shields.io/bundlephobia/minzip/@ignatiusmb/scramble.svg?label=minzip&style=popout)]()&nbsp;[![](https://img.shields.io/npm/v/@ignatiusmb/scramble.svg?style=popout)](https://www.npmjs.com/package/@ignatiusmb/scramble)&nbsp;[![](https://data.jsdelivr.com/v1/package/gh/ignatiusmb/scramble/badge?style=rounded)](https://www.jsdelivr.com/package/gh/ignatiusmb/scramble)
 
 <blockquote align=center>
-  <em>Scramble.js</em> is a JavaScript animation library for texts.<br>
-  It provides quick setup with minimal hassle.
+  <em>Scramble</em> is a JavaScript animation library for texts.<br>
+  Quick setup with minimal hassle.
 </blockquote>
 
 <p align=center>
@@ -13,27 +13,29 @@
   <a href="https://scramble.js.org/demos">Demos and examples</a>
 </p>
 
-## Getting Started
-
-### Install with npm
-
-```bash
-npm install @ignatiusmb/scramble
+```javascript
+const scramble = require('@ignatiusmb/scramble')
+scramble(document.querySelectorAll('.scramble-group'))
 ```
 
-### Or get it through a CDN
+## Installation
+
+### via NPM
+
+```sh
+$ npm install @ignatiusmb/scramble
+```
+
+### via CDN
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/ignatiusmb/scramble.js/lib/scramble.min.js"></script>
-
-<!-- Load an exact version of Scramble.js with automatic patches -->
-<script src="https://cdn.jsdelivr.net/gh/ignatiusmb/scramble.js@2.1/lib/scramble.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ignatiusmb/scramble@2.1.4/lib/scramble.min.js"></script>
 ```
 
 ---
 
 <h3 align="center">
-ScrambleJS is <a href=LICENSE>MIT licensed</a>
+Scramble is <a href=LICENSE>MIT licensed</a>
 </h3>
 
 ---
