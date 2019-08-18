@@ -22,5 +22,9 @@
     "README.md",
     "index.js",
     "lib/"
-  ]
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "test": "mocha"
+  }
 }
