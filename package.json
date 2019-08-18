@@ -14,8 +14,7 @@
   "dependencies": {},
   "devDependencies": {
     "eslint": "^6.1.0",
-    "mocha": "^6.2.0",
-    "standard": "^13.1.0"
+    "mocha": "^6.2.0"
   },
   "files": [
     "LICENSE",
@@ -24,8 +23,7 @@
     "lib/"
   ],
   "scripts": {
-    "fix": "standard --fix",
     "lint": "eslint .",
-    "test": "standard --env mocha"
+    "test": "mocha"
   }
 }
