@@ -26,6 +26,6 @@
   "scripts": {
     "fix": "standardx --fix",
     "lint": "eslint .",
-    "test": "mocha"
+    "test": "standard --env mocha"
   }
 }
