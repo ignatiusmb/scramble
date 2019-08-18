@@ -150,9 +150,5 @@ const addSections = () => {
 addSections()
 
 fetch('https://cdn.jsdelivr.net/gh/ignatiusmb/api/html/footer.html')
-  .then(response => {
-    return response.text()
-  })
-  .then(data => {
-    document.getElementById('footer').insertAdjacentHTML('beforeend', data)
-  })
+  .then(response => response.text())
+  .then(data => document.querySelector('footer.main-ftr').insertAdjacentHTML('beforeend', data))
