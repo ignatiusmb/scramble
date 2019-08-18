@@ -54,6 +54,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 1em;
   margin: 4em 0;
 }
 
@@ -218,12 +219,19 @@ footer span {
   margin-bottom: 0.5em;
 }
 
-footer span a {
-  color: white;
-}
-
-footer span a:hover {
+/* footer package title link */
+footer .title a {
+  font-size: 2.5em;
   color: #f9d324;
+}
+footer .title a:hover {
+  color: gray;
+}
+footer .title a:hover .scope {
+  color: crimson;
+}
+footer .title a:hover .package {
+  color: #8a0303;
 }
 
 @media only screen and (max-width: 480px) {
