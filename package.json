@@ -2,8 +2,10 @@
   "name": "@ignatiusmb/scramble",
   "version": "2.1.4",
   "description": "Scrambles text nodes",
+  "author": "Ignatius Bagus",
   "license": "MIT",
-  "repository": "ignatiusmb/scramble.js",
+  "repository": "ignatiusmb/scramble",
+  "homepage": "https://scramble.js.org",
   "main": "lib/scramble.js",
   "keywords": [
     "scramble",
