@@ -14,7 +14,9 @@
   "dependencies": {},
   "devDependencies": {
     "eslint": "^6.1.0",
-    "mocha": "^6.2.0"
+    "mocha": "^6.2.0",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7"
   },
   "files": [
     "LICENSE",
@@ -23,7 +25,9 @@
     "lib/"
   ],
   "scripts": {
-    "lint": "eslint .",
-    "test": "mocha"
+    "build": "webpack",
+    "lint": "eslint",
+    "test": "mocha",
+    "watch": "webpack --watch"
   }
 }
