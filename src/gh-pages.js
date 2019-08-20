@@ -1,8 +1,7 @@
-const scrambleGroup = document.getElementsByClassName('scramble-group')
-for (let i = 0; i < scrambleGroup.length; i++) {
-  const group = scrambleGroup[i].getElementsByTagName('span')
-  successiveScramble(group)
-}
+const scramble = require('./index')
+
+for (const sc of document.querySelectorAll('.scramble-group'))
+  scramble.successive(sc.querySelectorAll('span')).run()
 
 const createTerminal = name => {
   const terminal = document.createElement('div')
@@ -28,7 +27,7 @@ const createTerminal = name => {
   }
   terminal.appendChild(header)
 
-  let body = document.createElement('div')
+  const body = document.createElement('div')
   body.className = 'clog'
   const firstLine = document.createElement('code')
   body.appendChild(firstLine)
@@ -43,26 +42,27 @@ const scrCreateButtons = (element, status, terminal, buttons) => {
     case 'jumble':
       break
     case 'disorder':
-      example = disorder(element)
+      const example = scramble.disorder(element)
       status.className = 'running'
       for (let i = 0; i < buttons.length; i++) {
         const button = document.createElement('a')
+        button.style.userSelect = 'none'
         button.textContent = buttons[i]
         switch (i) {
           case 0:
+            const clear = terminal.window.querySelector('.fa-window.close')
             button.addEventListener('click', () => {
               terminal.body.lastChild.textContent = example.original
               terminal.body.appendChild(document.createElement('code'))
-              if (terminal.childElementCount > 10) document.getElementById('clearlog').click()
+              if (terminal.childElementCount > 10) clear.click()
             })
             break
           case 1:
             button.addEventListener('click', () => {
-              const fooEx = example.process()
-              if (fooEx === undefined) return
+              example.process()
               status.className = 'running'
-              let check = setInterval(() => {
-                if (fooEx.finished() === true) {
+              const check = setInterval(() => {
+                if (example.job().finished() === true) {
                   clearInterval(check)
                   status.className = 'finished'
                 }
@@ -101,7 +101,7 @@ const scrCreateSection = (name, titleText, exampleText, buttonNames) => {
   const headline = document.createElement('div')
   headline.className = 'headline'
 
-  let example = document.createElement('div')
+  const example = document.createElement('div')
   example.textContent = exampleText
   example.className = 'example'
 
