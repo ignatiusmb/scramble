@@ -79,7 +79,7 @@ section .demo {
 }
 
 .headline aside {
-  flex: 1.2;
+  width: 6em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -169,8 +169,7 @@ aside.running {
 
 .demo .clog-header span.terminal {
   flex: 1;
-  font-family: 'Fira Code';
-  font-weight: 500;
+  font-family: 'Ubuntu Mono';
 }
 
 .demo .clog-header span:not(:first-child) {
