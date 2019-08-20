@@ -15,7 +15,7 @@
 
 ```javascript
 const scramble = require('@ignatiusmb/scramble')
-scramble(document.querySelectorAll('.scramble-group'))
+scramble(document.querySelector('#yourElement')).run()
 ```
 
 ## Installation
