@@ -1,5 +1,3 @@
-const scramble = require('../lib/scramble')
-
 for (const sc of document.querySelectorAll('.scramble-group'))
   scramble.successive(sc.querySelectorAll('span')).run()
 
