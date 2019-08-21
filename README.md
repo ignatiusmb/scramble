@@ -28,10 +28,16 @@ scramble(document.querySelectorAll('.scramble-group')) // multiple elements
 $ npm install @ignatiusmb/scramble
 ```
 
-### via CDN
+### via UNPKG
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/ignatiusmb/scramble@2.1.4/lib/scramble.min.js"></script>
+<script src="https://unpkg.com/@ignatiusmb/scramble@3.0.0/lib/scramble.min.js"></script>
+```
+
+### via jsDelivr
+
+```html
+<script src="https://cdn.jsdelivr.net/gh/ignatiusmb/scramble@3.0.0/lib/scramble.min.js"></script>
 ```
 
 ---
