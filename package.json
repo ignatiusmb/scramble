@@ -1,11 +1,23 @@
 {
   "name": "@ignatiusmb/scramble",
   "version": "2.1.4",
-  "description": "Scrambles text nodes",
+  "description": "Text node scrambler, quick setup with minimal hassle.",
   "author": "Ignatius Bagus",
   "license": "MIT",
-  "repository": "ignatiusmb/scramble",
+  "repository": "github:ignatiusmb/scramble",
   "homepage": "https://scramble.js.org",
+  "umd:name": "scramble",
+  "umd:main": "lib/scramble.min.js",
+  "main": "lib/scramble.js",
+  "module": "lib/scramble.es.js",
+  "bugs": {
+    "url": "https://github.com/ignatiusmb/scramble/issues"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "lib/"
+  ],
   "keywords": [
     "scramble",
     "random",
@@ -13,21 +25,17 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "eslint": "^6.1.0",
-    "mocha": "^6.2.0",
+    "eslint": "^6.2.1",
+    "gzip-size": "^5.1.1",
+    "pretty-bytes": "^5.3.0",
+    "rollup": "^1.19.4",
+    "terser": "^4.2.0",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.7"
   },
-  "files": [
-    "LICENSE",
-    "README.md",
-    "index.js",
-    "lib/"
-  ],
   "scripts": {
-    "build": "webpack",
+    "build": "node build",
     "lint": "eslint",
-    "test": "mocha",
     "watch": "webpack --watch"
   }
 }
