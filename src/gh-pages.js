@@ -1,4 +1,4 @@
-const scramble = require('./index')
+const scramble = require('../lib/scramble')
 
 for (const sc of document.querySelectorAll('.scramble-group'))
   scramble.successive(sc.querySelectorAll('span')).run()
@@ -63,23 +63,11 @@ const scrCreateButtons = (element, status, terminal, buttons) => {
             break
           case 1:
             button.addEventListener('click', () => {
-              example.process()
-              status.className = 'running'
-              const check = setInterval(() => {
-                if (example.job().finished() === true) {
-                  clearInterval(check)
-                  status.className = 'finished'
-                }
-              }, 700)
-            })
-            break
-          case 2:
-            button.addEventListener('click', () => {
               example.start()
               status.className = 'running'
             })
             break
-          case 3:
+          case 2:
             button.addEventListener('click', () => {
               example.stop()
               status.className = 'idle'
@@ -140,14 +128,15 @@ reset.addEventListener('click', () => {
 })
 
 const addSections = () => {
-  main.appendChild(
-    scrCreateSection('disorder', 'continuous text disorder', 'this text is in disorder', [
+  const frag = document.createDocumentFragment()
+  frag.appendChild(
+    scrCreateSection('disorder', 'continuous text disorder', 'this is the worker function', [
       'original',
-      'process',
       'start',
       'stop'
     ])
   )
+  main.appendChild(frag)
   main.insertAdjacentElement('afterbegin', reset)
 }
 
