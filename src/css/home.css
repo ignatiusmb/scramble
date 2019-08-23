@@ -2,12 +2,18 @@ body {
   font-family: 'Fira Sans', sans-serif;
 }
 
-#reset {
-  cursor: pointer;
+#reset,
+#githubBar {
   z-index: 1;
   position: fixed;
-  right: 1em;
-  bottom: 1em;
+  bottom: -3em;
+  transform: scale(0);
+  transition: 500ms;
+}
+
+#reset {
+  cursor: pointer;
+  right: -3em;
   padding: 0.25em 1em;
   border: 2px solid #292826;
   border-radius: 0.25em;
@@ -26,9 +32,46 @@ body {
   color: black;
 }
 
+#githubBar {
+  left: -3em;
+  justify-self: flex-end;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 0.3em;
+}
+
+#githubBar a:first-child {
+  display: flex;
+  align-items: center;
+  padding: 0.25em 0.5em;
+  border: 1px solid #d5d5d5;
+  border-radius: 0.2em;
+  border-color: rgba(27, 31, 35, 0.2);
+  margin-right: 0.5em;
+  background: #eff3f6;
+  background-image: linear-gradient(180deg, #fafbfc, #eff3f6 90%);
+  background-position: -1px -1px;
+  color: black;
+}
+
+#githubBar a:first-child i {
+  margin-right: 0.4em;
+}
+
+#githubBar a:first-child:hover {
+  border-color: #2d2d2d;
+}
+
+#githubBar a:last-child {
+  display: flex;
+  padding: 0.25em 0.5em;
+}
+
 header h1 {
   margin: 0 0 0.2em;
   color: black;
+  font-family: 'Fira Code', monospace;
   font-size: 5em;
   font-weight: 400;
 }
@@ -38,10 +81,6 @@ header h3 {
   color: gray;
   font-weight: 400;
   font-family: 'Inconsolata', monospace;
-}
-
-header .github-bar span:not(:last-child) {
-  margin-right: 0.5em;
 }
 
 main {
@@ -75,7 +114,7 @@ section .demo {
 }
 
 .headline div {
-  flex: 4;
+  flex: 1;
 }
 
 .headline aside {
@@ -126,6 +165,7 @@ aside.processing {
 }
 
 .demo .example {
+  white-space: nowrap;
   padding: 1em;
   border: 2px solid black;
   border-right: none;
@@ -172,7 +212,7 @@ aside.processing {
 }
 
 .demo .clog-header span.terminal::before {
-  content: 'ScrambleJS@';
+  content: 'Scramble@';
 }
 
 .demo .clog-header span.terminal {
