@@ -1,3 +1,33 @@
+;(async function() {
+  const response = await fetch('./package.json')
+  const json = await response.json()
+  document.getElementById('version').textContent = json.version
+})()
+;(async function() {
+  const response = await fetch('https://api.github.com/repos/ignatiusmb/scramble')
+  const json = await response.json()
+  document.getElementById('stargazersCount').textContent = json['stargazers_count']
+})()
+;(async function() {
+  const response = await fetch('https://cdn.jsdelivr.net/gh/ignatiusmb/api/html/footer.html')
+  const html = await response.text()
+  document.querySelector('footer.main-ftr').insertAdjacentHTML('beforeend', html)
+})()
+
+const ghBar = document.getElementById('githubBar')
+const reset = document.getElementById('reset')
+reset.addEventListener('click', () => {
+  while (main.lastChild && main.childElementCount > 0) main.removeChild(main.firstChild)
+  addSections()
+})
+window.addEventListener('scroll', () => {
+  const scroll = document.documentElement.scrollTop
+  if (scroll >= 48) {
+    ghBar.style.bottom = reset.style.bottom = ghBar.style.left = reset.style.right = '1em'
+    ghBar.style.transform = reset.style.transform = 'scale(1)'
+  } else ghBar.style = reset.style = ''
+})
+
 for (const sc of document.querySelectorAll('.scramble-group'))
   scramble.successive(sc.querySelectorAll('span')).run()
 
@@ -10,15 +40,15 @@ const createTerminal = name => {
   for (const button of buttons) {
     const span = document.createElement('span')
     span.className = `fas fa-${button}`
-    if (button.includes('close')) {
+    if (button.includes('close'))
       span.addEventListener('click', () => {
         while (body.lastChild && body.childElementCount > 1) body.removeChild(body.firstChild)
       })
-    } else if (button.includes('minimize')) {
+    else if (button.includes('minimize'))
       span.addEventListener('click', () => (body.style.display = 'none'))
-    } else if (button.includes('maximize')) {
+    else if (button.includes('maximize'))
       span.addEventListener('click', () => (body.style.display = 'block'))
-    }
+
     header.appendChild(span)
     if (button.includes('terminal')) {
       const headerName = document.createElement('span')
@@ -118,12 +148,6 @@ const scrCreateSection = (name, titleText, exampleText, buttonNames) => {
 }
 
 const main = document.getElementById('sections')
-const reset = document.createElement('a')
-reset.id = 'reset'
-reset.addEventListener('click', () => {
-  while (main.lastChild && main.childElementCount > 0) main.removeChild(main.firstChild)
-  addSections()
-})
 
 const addSections = () => {
   const frag = document.createDocumentFragment()
@@ -135,11 +159,6 @@ const addSections = () => {
     ])
   )
   main.appendChild(frag)
-  main.insertAdjacentElement('afterbegin', reset)
 }
 
 addSections()
-
-fetch('https://cdn.jsdelivr.net/gh/ignatiusmb/api/html/footer.html')
-  .then(response => response.text())
-  .then(data => document.querySelector('footer.main-ftr').insertAdjacentHTML('beforeend', data))
