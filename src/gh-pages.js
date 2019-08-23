@@ -77,6 +77,7 @@ const scrCreateButtons = (element, status, terminal, buttons) => {
       status.className = 'running'
       for (let i = 0; i < buttons.length; i++) {
         const button = document.createElement('a')
+        button.classList.add('btn-main')
         button.style.userSelect = 'none'
         button.textContent = buttons[i]
         switch (i) {
