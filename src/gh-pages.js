@@ -46,8 +46,7 @@ const createTerminal = name => {
       })
     else if (button.includes('minimize'))
       span.addEventListener('click', () => (body.style.display = 'none'))
-    else if (button.includes('maximize'))
-      span.addEventListener('click', () => (body.style.display = 'block'))
+    else if (button.includes('maximize')) span.addEventListener('click', () => (body.style = ''))
 
     header.appendChild(span)
     if (button.includes('terminal')) {
