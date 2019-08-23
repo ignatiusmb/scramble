@@ -2,6 +2,17 @@ body {
   font-family: 'Fira Sans', sans-serif;
 }
 
+.btn-main {
+  background-color: gray;
+  color: #fafafa;
+}
+
+.btn-main:focus,
+.btn-main:hover {
+  background-color: #f9d324;
+  color: black;
+}
+
 #reset,
 #githubBar {
   z-index: 1;
@@ -17,20 +28,12 @@ body {
   padding: 0.25em 1em;
   border: 2px solid #292826;
   border-radius: 0.25em;
-  background-color: gray;
-  color: white;
   text-align: center;
   font-family: 'Rubik', sans-serif;
 }
 
 #reset::before {
   content: 'Reset';
-}
-
-#reset:focus,
-#reset:hover {
-  background-color: #f9d324;
-  color: black;
 }
 
 #githubBar {
@@ -42,17 +45,22 @@ body {
   margin-right: 0.3em;
 }
 
-#githubBar a:first-child {
+#githubBar a:first-child,
+#githubBar a:last-child {
   display: flex;
-  align-items: center;
   padding: 0.25em 0.5em;
+  border-radius: 0.25em;
+}
+
+#githubBar a:first-child {
+  align-items: center;
   border: 1px solid #d5d5d5;
-  border-radius: 0.2em;
   border-color: rgba(27, 31, 35, 0.2);
-  margin-right: 0.5em;
-  background: #eff3f6;
+  background-color: #eff3f6;
   background-image: linear-gradient(180deg, #fafbfc, #eff3f6 90%);
   background-position: -1px -1px;
+  background-repeat: repeat-x;
+  background-size: 110% 110%;
   color: black;
 }
 
@@ -62,14 +70,51 @@ body {
 
 #githubBar a:first-child:focus,
 #githubBar a:first-child:hover {
-  padding: 0.25em 0.5em;
   border-color: rgba(27, 31, 35, 0.35);
   background-color: #e6ebf1;
   background-image: linear-gradient(180deg, #f0f3f6, #e6ebf1 90%);
 }
 
 #githubBar a:last-child {
+  position: relative;
   display: flex;
+  margin-left: 0.5em;
+  border: 1px solid #d4d4d4;
+  background: #fafafa;
+  color: black;
+}
+
+#githubBar a:last-child:focus,
+#githubBar a:last-child:hover {
+  color: crimson;
+}
+
+#githubBar a:last-child::before,
+#githubBar a:last-child::after {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+
+#githubBar a:last-child::before {
+  top: 50%;
+  left: -4px;
+  margin-top: -6px;
+  border-width: 6px 6px 6px 0;
+  border-right-color: #fafafa;
+}
+
+#githubBar a:last-child::after {
+  z-index: -1;
+  top: 50%;
+  left: -5px;
+  margin-top: -7px;
+  border-width: 7px 7px 7px 0;
+  border-right-color: #d4d4d4;
 }
 
 header h1 {
@@ -193,11 +238,6 @@ aside.processing {
   text-align: center;
   font-family: 'Rubik', sans-serif;
   background-color: gray;
-}
-
-.demo .buttons a:hover {
-  color: #292826;
-  background-color: #f9d324;
 }
 
 .demo .buttons a:not(:last-child) {
