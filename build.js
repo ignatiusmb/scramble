@@ -6,7 +6,7 @@ const gzip = require('gzip-size')
 
 const pkg = require('./package')
 const banner = `/*!
- * ScrambleJS v${pkg.version}
+ * Scramble v${pkg.version}
  * Copyright(c) ${new Date().getFullYear()} Ignatius Bagus
  * MIT Licensed
  * scramble.js.org
