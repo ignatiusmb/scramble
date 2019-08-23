@@ -1,5 +1,5 @@
 body {
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .btn-main {
@@ -120,7 +120,7 @@ body {
 header h1 {
   margin: 0 0 0.2em;
   color: black;
-  font-family: 'Fira Code', monospace;
+  font-family: 'Space Mono', monospace;
   font-size: 5em;
   font-weight: 400;
 }
@@ -261,7 +261,7 @@ aside.processing {
 
 .demo .clog-header span.terminal {
   flex: 1;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .demo .clog-header span:not(:first-child) {
