@@ -1,17 +1,12 @@
 ;(async function() {
-  const response = await fetch('./package.json')
-  const json = await response.json()
+  // get latest version
+  let response = await fetch('./package.json')
+  let data = await response.json()
   document.getElementById('version').textContent = json.version
-})()
-;(async function() {
-  const response = await fetch('https://api.github.com/repos/ignatiusmb/scramble')
-  const json = await response.json()
+  // get current github stargazers count
+  response = await fetch('https://api.github.com/repos/ignatiusmb/scramble')
+  data = await response.json()
   document.getElementById('stargazersCount').textContent = json['stargazers_count']
-})()
-;(async function() {
-  const response = await fetch('https://cdn.jsdelivr.net/gh/ignatiusmb/api/html/footer.html')
-  const html = await response.text()
-  document.querySelector('footer.main-ftr').insertAdjacentHTML('beforeend', html)
 })()
 
 const ghBar = document.getElementById('githubBar')
