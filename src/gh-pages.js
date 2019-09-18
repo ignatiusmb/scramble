@@ -2,11 +2,11 @@
   // get latest version
   let response = await fetch('./package.json')
   let data = await response.json()
-  document.getElementById('version').textContent = json.version
+  document.getElementById('version').textContent = data.version
   // get current github stargazers count
   response = await fetch('https://api.github.com/repos/ignatiusmb/scramble')
   data = await response.json()
-  document.getElementById('stargazersCount').textContent = json['stargazers_count']
+  document.getElementById('stargazersCount').textContent = data['stargazers_count']
 })()
 
 const ghBar = document.getElementById('githubBar')
