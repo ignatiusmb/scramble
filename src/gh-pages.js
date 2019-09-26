@@ -22,7 +22,7 @@ for (const sc of document.querySelectorAll('.scramble-group'))
 const terminal = document.querySelector('article aside .terminal')
 const terBody = terminal.querySelector('.terminal-body')
 terBody.addEventListener('DOMSubtreeModified', () => {
-  while (terBody.childElementCount > 6) terBody.removeChild(terBody.firstChild)
+  while (terBody.childElementCount > 5) terBody.removeChild(terBody.firstChild)
 })
 const minimizeTerminal = () => {
   terBody.style.display = 'none'
@@ -30,9 +30,8 @@ const minimizeTerminal = () => {
 }
 const maximizeTerminal = () => (terBody.style.display = 'flex')
 const clearTerminal = () => {
-  while (terBody.lastChild && terBody.childElementCount > 1) {
-    terBody.removeChild(terBody.firstChild)
-  }
+  while (terBody.lastChild) terBody.removeChild(terBody.firstChild)
+  terBody.appendChild(document.createElement('code'))
 }
 
 function status(e, status) {
@@ -41,18 +40,25 @@ function status(e, status) {
   el.textContent = el.className = status
 }
 
-function stdout(node, runner) {
+function stdout(node, output) {
   const el = node.querySelector('.headline .example')
-  terBody.lastElementChild.textContent = runner.original
-  terBody.appendChild(document.createElement('code'))
+  if (terBody.lastElementChild.textContent === '') {
+    terBody.lastElementChild.textContent = output
+  } else {
+    const newline = document.createElement('code')
+    newline.textContent = output
+    terBody.appendChild(newline)
+  }
 }
 
 for (const section of document.querySelectorAll('#sections section')) {
   const jumbled = scramble(section.querySelector('.example'))
   const buttons = section.querySelector('.buttons').children
-  if ((section.id = 'disorder')) {
+  buttons[0].addEventListener('click', () => stdout(section, jumbled.worker.original))
+  if (section.id == 'scramble') {
+    buttons[1].addEventListener('click', () => jumbled.run())
+  } else if (section.id == 'disorder') {
     const runner = jumbled.worker
-    buttons[0].addEventListener('click', () => stdout(section, runner))
     buttons[1].addEventListener('click', () => runner.start())
     buttons[2].addEventListener('click', () => runner.stop())
   }
