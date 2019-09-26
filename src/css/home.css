@@ -274,7 +274,7 @@ section .demo {
   display: flex;
 }
 
-.demo .buttons a {
+.demo .buttons span {
   cursor: pointer;
   flex: 1;
   padding: 0.25em;
@@ -285,7 +285,7 @@ section .demo {
   background-color: gray;
 }
 
-.demo .buttons a:not(:last-child) {
+.demo .buttons span:not(:last-child) {
   margin-right: 2em;
 }
 
