@@ -339,4 +339,8 @@ footer .title a:hover .package {
     max-width: 72em;
     flex-direction: row;
   }
+
+  section:last-child {
+    margin-bottom: 0;
+  }
 }
