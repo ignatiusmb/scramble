@@ -85,7 +85,7 @@
       </section>
       <!-- Disorder Section -->
       <section id="disorder">
-        <h1>Worker/Runner</h1>
+        <h1>Worker Entity</h1>
         <div class="demo">
           <div class="headline">
             <div class="example">this is the worker function</div>
@@ -93,8 +93,8 @@
           </div>
           <div class="buttons">
             <span class="btn-main">original</span>
-            <span class="btn-main" onclick="status(event, 'running')">start</span>
-            <span class="btn-main" onclick="status(event, 'idle')">stop</span>
+            <span class="btn-main">start</span>
+            <span class="btn-main">stop</span>
           </div>
           <div class="bsh-code-box">
             <div class="cb-header" data-language="javascript"></div>
@@ -104,6 +104,35 @@
 <code>runner.original // button 1</code>
 <code>runner.start()  // button 2</code>
 <code>runner.stop()   // button 3</code></pre>
+          </div>
+        </div>
+      </section>
+      <!-- Successive Scramble Section -->
+      <section id="successive">
+        <h1>Successive Scramble</h1>
+        <div class="demo">
+          <div class="headline multiple">
+            <div class="wrapper">
+              <div class="example">first to decode</div>
+              <aside class="running">running</aside>
+            </div>
+            <div class="wrapper">
+              <div class="example">next to decode</div>
+              <aside class="running">running</aside>
+            </div>
+            <div class="wrapper">
+              <div class="example">last to decode</div>
+              <aside class="running">running</aside>
+            </div>
+          </div>
+          <div class="buttons">
+            <span class="btn-main">run</span>
+          </div>
+          <div class="bsh-code-box">
+            <div class="cb-header" data-language="javascript"></div>
+            <pre class="cb-format">
+<code>const listJumbler = scramble.successive(NodeList&lt;HTMLElement>)</code>
+<code>listJumbler.run()</code></pre>
           </div>
         </div>
       </section>

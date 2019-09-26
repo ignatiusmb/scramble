@@ -222,6 +222,15 @@ section .demo {
   margin: 2em 0 1em;
 }
 
+.headline.multiple {
+  flex-direction: column;
+}
+
+.headline.multiple .wrapper {
+  display: flex;
+  margin: 0.1em 0;
+}
+
 .headline div {
   flex: 1;
 }

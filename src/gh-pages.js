@@ -41,7 +41,6 @@ function status(e, status) {
 }
 
 function stdout(node, output) {
-  const el = node.querySelector('.headline .example')
   if (terBody.lastElementChild.textContent === '') {
     terBody.lastElementChild.textContent = output
   } else {
@@ -52,14 +51,20 @@ function stdout(node, output) {
 }
 
 for (const section of document.querySelectorAll('#sections section')) {
-  const jumbled = scramble(section.querySelector('.example'))
+  const headline = section.querySelector('.headline')
   const buttons = section.querySelector('.buttons').children
-  buttons[0].addEventListener('click', () => stdout(section, jumbled.worker.original))
   if (section.id == 'scramble') {
+    const jumbled = scramble(headline.querySelector('.example'))
+    buttons[0].addEventListener('click', () => stdout(section, jumbled.worker.original))
     buttons[1].addEventListener('click', () => jumbled.run())
   } else if (section.id == 'disorder') {
-    const runner = jumbled.worker
+    const runner = scramble(headline.querySelector('.example')).worker
+    buttons[0].addEventListener('click', () => stdout(section, runner.original))
     buttons[1].addEventListener('click', () => runner.start())
     buttons[2].addEventListener('click', () => runner.stop())
+  } else if (section.id == 'successive') {
+    const scrambleList = Array.from(headline.querySelectorAll('.example'))
+    const successive = scramble.successive(scrambleList)
+    buttons[0].addEventListener('click', () => successive.run())
   }
 }
