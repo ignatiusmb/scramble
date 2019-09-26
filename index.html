@@ -62,9 +62,30 @@
     </aside>
 
     <main id="sections">
+      <!-- Scramble Section -->
+      <section id="scramble">
+        <h1>Scramble & Decode</h1>
+        <div class="demo">
+          <div class="headline">
+            <div class="example">you pressed the button</div>
+            <aside class="running">running</aside>
+          </div>
+          <div class="buttons">
+            <span class="btn-main">original</span>
+            <span class="btn-main">run</span>
+          </div>
+          <div class="bsh-code-box">
+            <div class="cb-header" data-language="javascript"></div>
+            <pre class="cb-format">
+<code>const jumbler = scramble(HTMLElement)</code>
+<code>jumbler.worker.original // button 1</code>
+<code>jumbler.run()           // button 2</code></pre>
+          </div>
+        </div>
+      </section>
       <!-- Disorder Section -->
       <section id="disorder">
-        <h1>Continuous Text Disorder</h1>
+        <h1>Worker/Runner</h1>
         <div class="demo">
           <div class="headline">
             <div class="example">this is the worker function</div>
@@ -78,10 +99,11 @@
           <div class="bsh-code-box">
             <div class="cb-header" data-language="javascript"></div>
             <pre class="cb-format">
-<code>const runner = scramble(HTMLElement).worker</code>
-<code>runner.original</code>
-<code>runner.start()</code>
-<code>runner.stop()</code></pre>
+<code>const jumbler = scramble(HTMLElement)</code>
+<code>const runner = jumbler.worker</code>
+<code>runner.original // button 1</code>
+<code>runner.start()  // button 2</code>
+<code>runner.stop()   // button 3</code></pre>
           </div>
         </div>
       </section>
