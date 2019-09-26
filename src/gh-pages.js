@@ -9,151 +9,51 @@
   document.getElementById('stargazersCount').textContent = data['stargazers_count']
 })()
 
-const ghBar = document.getElementById('githubBar')
-const reset = document.getElementById('reset')
-reset.addEventListener('click', () => {
-  while (main.lastChild && main.childElementCount > 0) main.removeChild(main.firstChild)
-  addSections()
-})
+const fixedUnit = document.getElementById('fixedUnit')
 window.addEventListener('scroll', () => {
   const scroll = document.documentElement.scrollTop
-  if (scroll >= 48) {
-    ghBar.style.bottom = reset.style.bottom = ghBar.style.left = reset.style.right = '1em'
-    ghBar.style.transform = reset.style.transform = 'scale(1)'
-  } else ghBar.style = reset.style = ''
+  if (scroll >= 48) fixedUnit.style.top = '1em'
+  else fixedUnit.style = ''
 })
 
 for (const sc of document.querySelectorAll('.scramble-group'))
   scramble.successive(sc.querySelectorAll('span')).run()
 
-const createTerminal = name => {
-  const terminal = document.createElement('div')
-
-  const header = document.createElement('div')
-  header.className = 'clog-header'
-  const buttons = ['terminal', 'window-minimize', 'window-maximize', 'window-close']
-  for (const button of buttons) {
-    const span = document.createElement('span')
-    span.className = `fas fa-${button}`
-    if (button.includes('close'))
-      span.addEventListener('click', () => {
-        while (body.lastChild && body.childElementCount > 1) body.removeChild(body.firstChild)
-      })
-    else if (button.includes('minimize'))
-      span.addEventListener('click', () => (body.style.display = 'none'))
-    else if (button.includes('maximize')) span.addEventListener('click', () => (body.style = ''))
-
-    header.appendChild(span)
-    if (button.includes('terminal')) {
-      const headerName = document.createElement('span')
-      headerName.className = 'terminal'
-      headerName.textContent = name
-      header.appendChild(headerName)
-    }
+const terminal = document.querySelector('article aside .terminal')
+const terBody = terminal.querySelector('.terminal-body')
+terBody.addEventListener('DOMSubtreeModified', () => {
+  while (terBody.childElementCount > 6) terBody.removeChild(terBody.firstChild)
+})
+const minimizeTerminal = () => {
+  terBody.style.display = 'none'
+  terminal.querySelector('.terminal-header').style.borderBottom = '2px solid black'
+}
+const maximizeTerminal = () => (terBody.style.display = 'flex')
+const clearTerminal = () => {
+  while (terBody.lastChild && terBody.childElementCount > 1) {
+    terBody.removeChild(terBody.firstChild)
   }
-  terminal.appendChild(header)
-
-  const body = document.createElement('div')
-  body.className = 'clog'
-  const firstLine = document.createElement('code')
-  body.appendChild(firstLine)
-  terminal.appendChild(body)
-
-  return { window: terminal, name: name, head: header, body: body }
 }
 
-const scrCreateButtons = (element, status, terminal, buttons) => {
-  const buttonContainer = document.createElement('div')
-  switch (terminal.name) {
-    case 'jumble':
-      break
-    case 'disorder':
-      const example = scramble.disorder(element)
-      status.className = 'running'
-      for (let i = 0; i < buttons.length; i++) {
-        const button = document.createElement('a')
-        button.classList.add('btn-main')
-        button.style.userSelect = 'none'
-        button.textContent = buttons[i]
-        switch (i) {
-          case 0:
-            const clear = terminal.window.querySelector('.fa-window.close')
-            button.addEventListener('click', () => {
-              terminal.body.lastChild.textContent = example.original
-              terminal.body.appendChild(document.createElement('code'))
-              if (terminal.childElementCount > 10) clear.click()
-            })
-            break
-          case 1:
-            button.addEventListener('click', () => {
-              example.start()
-              status.className = 'running'
-            })
-            break
-          case 2:
-            button.addEventListener('click', () => {
-              example.stop()
-              status.className = 'idle'
-            })
-        }
-        buttonContainer.appendChild(button)
-      }
-      break
+function status(e, status) {
+  const clicked = e.target.parentElement.parentElement
+  const el = clicked.querySelector('.headline aside')
+  el.textContent = el.className = status
+}
+
+function stdout(node, runner) {
+  const el = node.querySelector('.headline .example')
+  terBody.lastElementChild.textContent = runner.original
+  terBody.appendChild(document.createElement('code'))
+}
+
+for (const section of document.querySelectorAll('#sections section')) {
+  const jumbled = scramble(section.querySelector('.example'))
+  const buttons = section.querySelector('.buttons').children
+  if ((section.id = 'disorder')) {
+    const runner = jumbled.worker
+    buttons[0].addEventListener('click', () => stdout(section, runner))
+    buttons[1].addEventListener('click', () => runner.start())
+    buttons[2].addEventListener('click', () => runner.stop())
   }
-  return buttonContainer
 }
-
-const scrCreateSection = (name, titleText, exampleText, buttonNames) => {
-  const section = document.createElement('section')
-
-  const title = document.createElement('h2')
-  title.textContent = titleText
-  section.appendChild(title)
-
-  const divDemo = document.createElement('div')
-  divDemo.className = 'demo'
-
-  const headline = document.createElement('div')
-  headline.className = 'headline'
-
-  const example = document.createElement('div')
-  example.textContent = exampleText
-  example.className = 'example'
-
-  const status = document.createElement('aside')
-  headline.appendChild(example)
-  headline.appendChild(status)
-  divDemo.appendChild(headline)
-
-  const terminal = createTerminal(name)
-
-  const buttons = scrCreateButtons(example, status, terminal, buttonNames)
-  buttons.className = 'buttons'
-  divDemo.appendChild(buttons)
-
-  const codeBlock = document.createElement('pre')
-  const code = document.createElement('code')
-  code.textContent = 'disorder(HTMLElement)'
-  codeBlock.appendChild(code)
-
-  divDemo.appendChild(terminal.window)
-  divDemo.appendChild(codeBlock)
-  section.appendChild(divDemo)
-  return section
-}
-
-const main = document.getElementById('sections')
-
-const addSections = () => {
-  const frag = document.createDocumentFragment()
-  frag.appendChild(
-    scrCreateSection('disorder', 'continuous text disorder', 'this is the worker function', [
-      'original',
-      'start',
-      'stop'
-    ])
-  )
-  main.appendChild(frag)
-}
-
-addSections()

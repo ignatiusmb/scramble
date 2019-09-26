@@ -6,33 +6,39 @@
   <meta name="author" content="Ignatius Bagussuputra">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>Scramble &rarr; JavaScript animation library for texts</title>
+
   <!-- Font Awesome v5.10.1 -->
   <link rel="stylesheet" href="src/css/all.min.css">
   <!-- Google Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Code&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karla&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Mono&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap">
+
   <!-- Local Stylesheets -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ignatiusmb/bluesheets/core.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ignatiusmb/api/css/footer.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ignatiusmb/bluesheets/code.min.css">
   <link rel="stylesheet" href="src/css/home.css">
 
   <!-- Deferred Scripts -->
   <script defer src="https://cdn.jsdelivr.net/gh/ignatiusmb/api/footer.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/ignatiusmb/bluesheets/code.min.js"></script>
+
 </head>
 
 <body>
-  <div id="githubBar">
-    <a href="https://github.com/ignatiusmb/scramble">
-      <i class="fas fa-star"></i>
-      <div>Star</div>
-    </a>
-    <a href="https://github.com/ignatiusmb/scramble/stargazers" id="stargazersCount"></a>
+  <div id="fixedUnit">
+    <div class="github-bar">
+      <a href="https://github.com/ignatiusmb/scramble">
+        <i class="fas fa-star"></i>
+        <div>Star</div>
+      </a>
+      <a href="https://github.com/ignatiusmb/scramble/stargazers" id="stargazersCount"></a>
+    </div>
   </div>
-  <a id="reset" class="btn-main"></a>
 
   <header class="bsh scramble-group">
     <h1><span>Scramble</span></h1>
@@ -41,7 +47,46 @@
     </h3>
   </header>
 
-  <main id="sections"></main>
+  <article>
+    <aside>
+      <div class="terminal">
+        <div class="terminal-header">
+          <span class="fas fa-terminal"></span>
+          <span class="terminal-title"></span>
+          <span class="fas fa-window-minimize" onclick="minimizeTerminal()"></span>
+          <span class="fas fa-window-maximize" onclick="maximizeTerminal()"></span>
+          <span class="fas fa-window-close" onclick="clearTerminal()"></span>
+        </div>
+        <div class="terminal-body"><code></code></div>
+      </div>
+    </aside>
+
+    <main id="sections">
+      <!-- Disorder Section -->
+      <section id="disorder">
+        <h1>Continuous Text Disorder</h1>
+        <div class="demo">
+          <div class="headline">
+            <div class="example">this is the worker function</div>
+            <aside class="running">running</aside>
+          </div>
+          <div class="buttons">
+            <a class="btn-main">original</a>
+            <a class="btn-main" onclick="status(event, 'running')">start</a>
+            <a class="btn-main" onclick="status(event, 'idle')">stop</a>
+          </div>
+          <div class="bsh-code-box">
+            <div class="cb-header" data-language="javascript"></div>
+            <pre class="cb-format">
+<code>const runner = scramble(HTMLElement).worker</code>
+<code>runner.original</code>
+<code>runner.start()</code>
+<code>runner.stop()</code></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+  </article>
 
   <footer class="gh-api">
     <div class="bsh title">
