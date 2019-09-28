@@ -177,12 +177,14 @@ article > aside .terminal {
 }
 
 .terminal-body {
+  overflow: auto;
   display: flex;
   flex-direction: column;
   padding: 0.5em;
   border: 2px solid black;
   border-top: none;
   background: #2d2d2d;
+  white-space: nowrap;
 }
 
 .terminal code {
@@ -334,12 +336,19 @@ footer .title a:hover .package {
 @media only screen and (min-width: 600px) {
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 769px) {
   article {
     max-width: 72em;
     flex-direction: row;
   }
 
+  article aside {
+    max-width: 27em;
+  }
+
+  section:first-child {
+    margin-top: 0;
+  }
   section:last-child {
     margin-bottom: 0;
   }
