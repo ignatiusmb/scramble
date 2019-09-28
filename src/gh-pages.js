@@ -39,7 +39,7 @@ function changeStatus(section, status) {
   aside.textContent = aside.className = status
 }
 
-function stdout(node, output) {
+function stdout(output) {
   if (terBody.lastElementChild.textContent === '') {
     terBody.lastElementChild.textContent = output
   } else {
@@ -54,7 +54,7 @@ for (const section of document.querySelectorAll('#sections section')) {
   const buttons = section.querySelector('.buttons').children
   if (section.id == 'scramble') {
     const jumbled = scramble(headline.querySelector('.example'))
-    buttons[0].addEventListener('click', () => stdout(section, jumbled.worker.original))
+    buttons[0].addEventListener('click', () => stdout(`original text: ${jumbled.worker.original}`))
     buttons[1].addEventListener('click', () => {
       changeStatus(section, 'processing')
       jumbled.run()
@@ -65,11 +65,18 @@ for (const section of document.querySelectorAll('#sections section')) {
         }
       }, 500)
     })
+    buttons[2].addEventListener('click', () => stdout(`finished state: ${jumbled.finished()}`))
   } else if (section.id == 'disorder') {
     const runner = scramble(headline.querySelector('.example')).worker
-    buttons[0].addEventListener('click', () => stdout(section, runner.original))
-    buttons[1].addEventListener('click', () => runner.start())
-    buttons[2].addEventListener('click', () => runner.stop())
+    buttons[0].addEventListener('click', () => stdout(`original text: ${runner.original}`))
+    buttons[1].addEventListener('click', () => {
+      changeStatus(section, 'running')
+      runner.start()
+    })
+    buttons[2].addEventListener('click', () => {
+      changeStatus(section, 'idle')
+      runner.stop()
+    })
   } else if (section.id == 'successive') {
     const scrambleList = Array.from(headline.querySelectorAll('.example'))
     const successive = scramble.successive(scrambleList)
