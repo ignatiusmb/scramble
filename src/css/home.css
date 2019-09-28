@@ -286,6 +286,8 @@ section .demo {
 }
 
 .demo .buttons span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
   cursor: pointer;
   flex: 1;
   padding: 0.25em;
