@@ -34,10 +34,9 @@ const clearTerminal = () => {
   terBody.appendChild(document.createElement('code'))
 }
 
-function status(e, status) {
-  const clicked = e.target.parentElement.parentElement
-  const el = clicked.querySelector('.headline aside')
-  el.textContent = el.className = status
+function changeStatus(section, status) {
+  const aside = section.querySelector('aside')
+  aside.textContent = aside.className = status
 }
 
 function stdout(node, output) {
@@ -56,7 +55,16 @@ for (const section of document.querySelectorAll('#sections section')) {
   if (section.id == 'scramble') {
     const jumbled = scramble(headline.querySelector('.example'))
     buttons[0].addEventListener('click', () => stdout(section, jumbled.worker.original))
-    buttons[1].addEventListener('click', () => jumbled.run())
+    buttons[1].addEventListener('click', () => {
+      changeStatus(section, 'processing')
+      jumbled.run()
+      const timer = setInterval(() => {
+        if (jumbled.finished()) {
+          changeStatus(section, 'finished')
+          clearInterval(timer)
+        }
+      }, 500)
+    })
   } else if (section.id == 'disorder') {
     const runner = scramble(headline.querySelector('.example')).worker
     buttons[0].addEventListener('click', () => stdout(section, runner.original))
