@@ -56,14 +56,16 @@ for (const section of document.querySelectorAll('#sections section')) {
     const jumbled = scramble(headline.querySelector('.example'))
     buttons[0].addEventListener('click', () => stdout(`original text: ${jumbled.worker.original}`))
     buttons[1].addEventListener('click', () => {
-      changeStatus(section, 'processing')
-      jumbled.run()
-      const timer = setInterval(() => {
-        if (jumbled.finished()) {
-          changeStatus(section, 'finished')
-          clearInterval(timer)
-        }
-      }, 500)
+      if (!jumbled.finished()) {
+        changeStatus(section, 'processing')
+        jumbled.run()
+        const timer = setInterval(() => {
+          if (jumbled.finished()) {
+            changeStatus(section, 'finished')
+            clearInterval(timer)
+          }
+        }, 500)
+      }
     })
     buttons[2].addEventListener('click', () => stdout(`finished state: ${jumbled.finished()}`))
   } else if (section.id == 'disorder') {
@@ -80,6 +82,8 @@ for (const section of document.querySelectorAll('#sections section')) {
   } else if (section.id == 'successive') {
     const scrambleList = Array.from(headline.querySelectorAll('.example'))
     const successive = scramble.successive(scrambleList)
-    buttons[0].addEventListener('click', () => successive.run())
+    buttons[0].addEventListener('click', () => {
+      successive.run()
+    })
   }
 }
