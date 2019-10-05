@@ -65,6 +65,14 @@ body {
   background-image: linear-gradient(180deg, #f0f3f6, #e6ebf1 90%);
 }
 
+header {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 header h1 {
   margin: 0 0 0.2em;
   color: black;
