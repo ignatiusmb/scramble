@@ -278,16 +278,10 @@ footer span {
 /* footer package title link */
 footer .title a {
   font-size: 2em;
-  color: #f9d324;
+  color: #323330;
 }
 footer .title a:hover {
-  color: gray;
-}
-footer .title a:hover .scope {
-  color: crimson;
-}
-footer .title a:hover .package {
-  color: #8a0303;
+  color: #f9d324;
 }
 
 @media only screen and (min-width: 480px) {
