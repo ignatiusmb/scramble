@@ -3,10 +3,6 @@
   let response = await fetch('./package.json')
   let data = await response.json()
   document.getElementById('version').textContent = data.version
-  // get current github stargazers count
-  response = await fetch('https://api.github.com/repos/ignatiusmb/scramble')
-  data = await response.json()
-  document.getElementById('stargazersCount').textContent = data['stargazers_count']
 })()
 
 const fixedUnit = document.getElementById('fixedUnit')
@@ -21,8 +17,9 @@ for (const sc of document.querySelectorAll('.scramble-group'))
 
 const terminal = document.querySelector('article aside .terminal')
 const terBody = terminal.querySelector('.terminal-body')
+const historyLimit = window.matchMedia('(min-width: 769px)').matches ? 25 : 5
 terBody.addEventListener('DOMSubtreeModified', () => {
-  while (terBody.childElementCount > 5) terBody.removeChild(terBody.firstChild)
+  while (terBody.childElementCount > historyLimit) terBody.removeChild(terBody.firstChild)
 })
 const minimizeTerminal = () => {
   terBody.style.display = 'none'
