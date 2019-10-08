@@ -1,4 +1,4 @@
-;(async function() {
+;(async () => {
   // get latest version
   let response = await fetch('./package.json')
   let data = await response.json()
@@ -12,8 +12,18 @@ window.addEventListener('scroll', () => {
   else fixedUnit.style = ''
 })
 
-for (const sc of document.querySelectorAll('.scramble-group'))
-  scramble.successive(sc.querySelectorAll('span')).run()
+const title = document.querySelector('header h1')
+const description = document.querySelectorAll('header h3 span')
+const repeat = () => {
+  if (scramble.random(0, 1)) {
+    scramble(title).run()
+    setTimeout(repeat, 5000)
+  } else {
+    scramble.successive(description).run()
+    setTimeout(repeat, 7000)
+  }
+}
+setTimeout(repeat, 1000)
 
 const terminal = document.querySelector('article aside .terminal')
 const terBody = terminal.querySelector('.terminal-body')
@@ -31,12 +41,12 @@ const clearTerminal = () => {
   terBody.appendChild(document.createElement('code'))
 }
 
-function changeStatus(section, status) {
+const changeStatus = (section, status) => {
   const aside = section.querySelector('aside')
   aside.textContent = aside.className = status
 }
 
-function stdout(output) {
+const stdout = output => {
   if (terBody.lastElementChild.textContent === '') {
     terBody.lastElementChild.textContent = output
   } else {
@@ -48,8 +58,8 @@ function stdout(output) {
 
 for (const section of document.querySelectorAll('#sections section')) {
   const headline = section.querySelector('.headline')
-  const buttons = section.querySelector('.buttons').children
-  if (section.id == 'scramble') {
+  const buttons = section.querySelectorAll('.buttons span')
+  if (section.id === 'scramble') {
     const jumbled = scramble(headline.querySelector('.example'))
     buttons[0].addEventListener('click', () => stdout(`original text: ${jumbled.worker.original}`))
     buttons[1].addEventListener('click', () => {
@@ -65,7 +75,7 @@ for (const section of document.querySelectorAll('#sections section')) {
       }
     })
     buttons[2].addEventListener('click', () => stdout(`finished state: ${jumbled.finished()}`))
-  } else if (section.id == 'disorder') {
+  } else if (section.id === 'disorder') {
     const runner = scramble(headline.querySelector('.example')).worker
     buttons[0].addEventListener('click', () => stdout(`original text: ${runner.original}`))
     buttons[1].addEventListener('click', () => {
@@ -76,9 +86,8 @@ for (const section of document.querySelectorAll('#sections section')) {
       changeStatus(section, 'idle')
       runner.stop()
     })
-  } else if (section.id == 'successive') {
-    const scrambleList = Array.from(headline.querySelectorAll('.example'))
-    const successive = scramble.successive(scrambleList)
+  } else if (section.id === 'successive') {
+    const successive = scramble.successive(headline.querySelectorAll('.example'))
     buttons[0].addEventListener('click', () => {
       successive.run()
     })
