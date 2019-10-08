@@ -13,25 +13,25 @@ const banner = `/*!
  */
 `
 
-function outFormat(type, file, name) {
+function format(type, file, name) {
   const format = {
     banner,
     format: type,
     file: file
   }
-  if (name !== undefined) format.name = name
+  if (name) format.name = name
   return format
 }
 
 console.info('Compiling...')
-;(async function() {
+;(async () => {
   const bundle = await rollup({ input: 'src/index.js' })
 
-  bundle.write(outFormat('cjs', pkg.main))
-  bundle.write(outFormat('es', pkg.module))
+  bundle.write(format('cjs', pkg.main))
+  bundle.write(format('es', pkg.module))
 
   const umd = pkg['umd:main']
-  await bundle.write(outFormat('umd', umd, pkg['umd:name']))
+  await bundle.write(format('umd', umd, pkg['umd:name']))
   const data = fs.readFileSync(umd, 'utf8')
   const { code, error } = minify(data) // minify code
   if (error) return console.error(error.message)
