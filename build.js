@@ -7,7 +7,7 @@ const gzip = require('gzip-size')
 const pkg = require('./package')
 const banner = `/*!
  * Scramble v${pkg.version}
- * Copyright(c) ${new Date().getFullYear()} Ignatius Bagus
+ * Copyright (c) ${new Date().getFullYear()} Ignatius Bagus
  * MIT Licensed
  * scramble.js.org
  */
@@ -23,8 +23,8 @@ function outFormat(type, file, name) {
   return format
 }
 
-console.info('Compiling... 😷')
-;(async function build() {
+console.info('Compiling...')
+;(async function() {
   const bundle = await rollup({ input: 'src/index.js' })
 
   bundle.write(outFormat('cjs', pkg.main))
@@ -38,6 +38,6 @@ console.info('Compiling... 😷')
   fs.writeFileSync(umd, `${banner}\n${code}`) // rewrite banner
 
   const gzipSize = gzip.sync(code)
-  console.info('Compilation was successful! 👍🥳')
+  console.info('Compilation was successful!')
   console.info(`~> gzip size: ${pb(gzipSize)}`)
 })()
