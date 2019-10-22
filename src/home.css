@@ -77,14 +77,14 @@ header h1 {
   margin: 0 0 0.2em;
   color: black;
   font-family: 'Space Mono', monospace;
-  font-size: 4em;
+  font-size: 4rem;
   font-weight: 400;
 }
 
 header h3 {
   margin: 0 0 1em;
   color: gray;
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: 400;
   font-family: 'Inconsolata', monospace;
 }
@@ -176,7 +176,7 @@ section {
 
 section h1 {
   text-align: center;
-  font-size: 1.8em;
+  font-size: 1.8rem;
   font-weight: 500;
 }
 
@@ -277,7 +277,7 @@ footer span {
 
 /* footer package title link */
 footer .title a {
-  font-size: 2em;
+  font-size: 2rem;
   color: #323330;
 }
 footer .title a:hover {
@@ -286,7 +286,7 @@ footer .title a:hover {
 
 @media only screen and (min-width: 480px) {
   header h1 {
-    font-size: 5em;
+    font-size: 5rem;
   }
 
   header h3 {
