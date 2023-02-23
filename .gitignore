@@ -1,27 +1,5 @@
-# OS X
-.DS_Store*
-Icon?
-._*
-
-# Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-
-# Linux
-.directory
-*~
-
-
-# npm
 node_modules
-package-lock.json
-*.log
-*.gz
+.DS_Store
 
-
-# Coveralls
-coverage
-
-# Benchmarking
-benchmarks/graphs
+*.js
+*.d.ts
