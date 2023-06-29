@@ -1,5 +1,6 @@
-import { INTERVAL } from './options.js';
 import { decode, jumble } from './utils.js';
+
+const INTERVAL = 42;
 
 /**
  * @param {HTMLElement} element node anchor
@@ -24,25 +25,6 @@ export function disorder(element) {
 	function execute() {
 		element.textContent = jumble(total);
 	}
-}
-
-/**
- * @param {NodeListOf<HTMLElement>} elements node list
- */
-export function successive(elements) {
-	const list = Array.from(elements, (el) => scramble(el));
-
-	/** @param {number} idx */
-	function execute(idx) {
-		if (idx >= list.length) return;
-		function check() {
-			list[idx].finished ? execute(idx + 1) : setTimeout(check, 1000);
-		}
-		list[idx].run(), setTimeout(check, 1000);
-	}
-	return {
-		run: () => execute(0),
-	};
 }
 
 /**
@@ -83,5 +65,24 @@ export function scramble(node) {
 			runner.stop();
 			timer && clearInterval(timer);
 		},
+	};
+}
+
+/**
+ * @param {NodeListOf<HTMLElement>} elements node list
+ */
+export function successive(elements) {
+	const list = Array.from(elements, (el) => scramble(el));
+
+	/** @param {number} idx */
+	function execute(idx) {
+		if (idx >= list.length) return;
+		function check() {
+			list[idx].finished ? execute(idx + 1) : setTimeout(check, 1000);
+		}
+		list[idx].run(), setTimeout(check, 1000);
+	}
+	return {
+		run: () => execute(0),
 	};
 }

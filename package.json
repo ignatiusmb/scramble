@@ -12,11 +12,13 @@
     "check:style": "prettier --check .",
     "format": "prettier --write ."
   },
+  "types": "./index.d.ts",
   "exports": {
     ".": "./src/index.js"
   },
   "files": [
-    "src/"
+    "src/",
+    "index.d.ts"
   ],
   "homepage": "https://scramble.js.org",
   "packageManager": "pnpm@8.6.5",
