@@ -6,9 +6,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "clean": "git add * && git clean -dfx -e node_modules",
     "check": "pnpm check:code && pnpm check:style",
-    "check:code": "tsc --noEmit --target ES2020",
+    "check:code": "tsc --noEmit",
     "check:style": "prettier --check .",
     "format": "prettier --write ."
   },
