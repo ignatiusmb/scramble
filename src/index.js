@@ -1,153 +1,88 @@
-// Utility
+import { decode, jumble } from './utils.js';
+
+const INTERVAL = 42;
+
 /**
- * Check if an element is visible in viewport
- * @param {HTMLElement} elem element to be checked
+ * @param {HTMLElement} element node anchor
  */
-function inViewport(elem) {
-  const rect = elem.getBoundingClientRect()
-  return (
-    rect.bottom > 0 &&
-    rect.right > 0 &&
-    rect.left < (window.innerWidth || document.documentElement.clientWidth) &&
-    rect.top < (window.innerHeight || document.documentElement.clientHeight)
-  )
+export function disorder(element) {
+	const original = element.textContent || '';
+	const total = original.length;
+
+	let interval = setInterval(execute, INTERVAL);
+	let running = true;
+	return {
+		original,
+		start() {
+			if (running) return;
+			running = !!(interval = setInterval(execute, INTERVAL));
+		},
+		stop() {
+			running = !!(interval && void clearInterval(interval));
+		},
+	};
+
+	function execute() {
+		element.textContent = jumble(total);
+	}
 }
 
 /**
- * Generates a random word
- * @param {number} textLen length of textContent
- * @param {number} firstChar for a specific first char
+ * @param {HTMLElement} node element anchor
  */
-function jumble(textLen) {
-  let generated = ''
-  const randomChar = () => String.fromCharCode(scramble.random(33, 126))
-  for (let i = 0; i < textLen; i++) generated += randomChar()
-  return generated
+export function scramble(node) {
+	let executed = false;
+	/** @type {number} */
+	let timer;
+
+	let index = 0;
+	const original = node.textContent || '';
+	const runner = disorder(node);
+
+	function iterate() {
+		timer && clearInterval(timer);
+		timer = setInterval(() => {
+			if (index >= original.length) clearInterval(timer);
+			node.textContent = decode(original, index);
+		}, INTERVAL);
+
+		if (index++ >= original.length) clearTimeout(timer);
+		else setTimeout(iterate, 432);
+	}
+
+	return {
+		worker: runner,
+		get finished() {
+			return index >= original.length;
+		},
+		run() {
+			if (executed) return;
+			executed = true;
+			runner.stop();
+			iterate();
+		},
+		destroy() {
+			runner.stop();
+			timer && clearInterval(timer);
+		},
+	};
 }
 
 /**
- * Returns decoded letters corresponding to the length given
- * @param {String} original initial text of the element
- * @param {number} decodeLen farthest index from text to decode
- * @param {number} firstChar a specific first char index
+ * @param {NodeListOf<HTMLElement>} elements node list
  */
-function decode(original, decodeLen) {
-  const newText = original.substring(0, decodeLen)
-  return newText + jumble(original.length - decodeLen)
+export function successive(elements) {
+	const list = Array.from(elements, (el) => scramble(el));
+
+	/** @param {number} idx */
+	function execute(idx) {
+		if (idx >= list.length) return;
+		function check() {
+			list[idx].finished ? execute(idx + 1) : setTimeout(check, 1000);
+		}
+		list[idx].run(), setTimeout(check, 1000);
+	}
+	return {
+		run: () => execute(0),
+	};
 }
-
-/**
- * Returns decoded letters corresponding to the length given
- * @param {HTMLElement} el html element to scramble
- */
-function disorder(el) {
-  const original = el.textContent
-  const totalChars = original.length
-
-  const execute = () => (el.textContent = jumble(totalChars))
-
-  let jumbler = setInterval(execute, scramble.interval)
-  let running = true
-  return {
-    original,
-    start: () => {
-      if (!running) {
-        running = true
-        jumbler = setInterval(execute, scramble.interval)
-      } else throw new Error('Instance is already running!')
-    },
-    stop: () => {
-      if (!running) return
-      running = false
-      clearInterval(jumbler)
-    }
-  }
-}
-
-/**
- * Scrambles and decode a list of elements in succession
- * @param {NodeListOf<HTMLElement>} elements
- */
-function successive(elements) {
-  const execute = idx => {
-    if (idx >= next.length) return
-    function check() {
-      if (next[idx].finished()) execute(idx + 1)
-      else setTimeout(check, 1000)
-    }
-    next[idx].run()
-    setTimeout(check, 1000)
-  }
-  const next = Array.from(elements).map(el => scramble(el))
-  return {
-    run: () => execute(0)
-  }
-}
-
-/**
- * Scrambles an element content and rewrite it one by one
- * @param {HTMLElement} el html element to scramble
- * @param {Object} args additional parameters
- */
-function scramble(el, args) {
-  if (el == null) return
-  if (el instanceof NodeList) {
-    const disarray = Array.from(el).map(x => scramble(x))
-    const executed = Array(el.length).fill(false)
-
-    const events = ['load', 'scroll']
-    for (let i = 0; i < el.length; i++) {
-      for (const ev of events) {
-        window.addEventListener(ev, function check() {
-          if (executed[i]) window.removeEventListener(ev, check)
-          if (!executed[i] && inViewport(el[i])) {
-            executed[i] = true
-            disarray[i].run()
-          }
-        })
-      }
-    }
-    return {
-      status: () => executed.every(x => x)
-    }
-  } else if (el instanceof HTMLElement) {
-    let executed = false
-    let letterIdx = 0
-    let original
-
-    if (args === undefined) original = el.textContent
-    else original = args.original
-
-    const totalChars = original.length
-    const runner = disorder(el)
-
-    let timer
-    const iterateLetters = () => {
-      clearInterval(timer)
-      timer = setInterval(() => {
-        if (letterIdx >= totalChars) clearInterval(timer)
-        el.textContent = decode(original, letterIdx)
-      }, scramble.interval)
-      if (letterIdx++ >= totalChars) clearTimeout(iterateLetters)
-      else setTimeout(iterateLetters, 432)
-    }
-    return {
-      finished: () => letterIdx >= totalChars,
-      run: () => {
-        if (executed) return
-        executed = true
-        runner.stop()
-        iterateLetters()
-      },
-      worker: runner
-    }
-  }
-}
-
-scramble.interval = 42
-scramble.disorder = disorder
-scramble.successive = successive
-
-scramble.random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
-
-export default scramble

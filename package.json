@@ -1,39 +1,36 @@
 {
   "name": "@ignatiusmb/scramble",
-  "version": "3.0.1",
-  "description": "Text node scrambler, quick setup with minimal hassle.",
+  "version": "4.0.0",
+  "description": "Scramble text and emulate decoding sequence",
   "author": "Ignatius Bagus",
   "license": "MIT",
-  "repository": "github:ignatiusmb/scramble",
-  "homepage": "https://scramble.js.org",
-  "umd:name": "scramble",
-  "umd:main": "lib/scramble.min.js",
-  "main": "lib/scramble.js",
-  "module": "lib/scramble.es.js",
-  "bugs": {
-    "url": "https://github.com/ignatiusmb/scramble/issues"
+  "type": "module",
+  "scripts": {
+    "check": "pnpm check:code && pnpm check:style",
+    "check:code": "tsc --noEmit",
+    "check:style": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "types": "./index.d.ts",
+  "exports": {
+    ".": "./src/index.js"
   },
   "files": [
-    "LICENSE",
-    "README.md",
-    "lib/"
+    "src/",
+    "index.d.ts"
   ],
+  "homepage": "https://scramble.js.org",
+  "packageManager": "pnpm@8.6.5",
+  "prettier": "mauss/prettier.json",
+  "repository": "github:ignatiusmb/scramble",
+  "bugs": "https://github.com/ignatiusmb/scramble/issues",
   "keywords": [
     "scramble",
-    "random",
-    "ignatiusmb"
+    "random"
   ],
-  "dependencies": {},
   "devDependencies": {
-    "eslint": "^6.2.1",
-    "gzip-size": "^5.1.1",
-    "pretty-bytes": "^5.3.0",
-    "rollup": "^1.19.4",
-    "terser": "^4.2.0"
-  },
-  "scripts": {
-    "build": "node build",
-    "lint": "eslint",
-    "watch": "webpack --watch"
+    "mauss": "^0.5.0",
+    "prettier": "^2.8.8",
+    "typescript": "^5.1.6"
   }
 }

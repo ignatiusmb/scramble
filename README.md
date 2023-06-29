@@ -1,59 +1,19 @@
-# Scramble &middot; [![](https://img.shields.io/bundlephobia/minzip/@ignatiusmb/scramble.svg?label=minzip&style=popout)]()&nbsp;[![](https://img.shields.io/npm/v/@ignatiusmb/scramble.svg?style=popout)](https://www.npmjs.com/package/@ignatiusmb/scramble)&nbsp;[![](https://data.jsdelivr.com/v1/package/gh/ignatiusmb/scramble/badge?style=rounded)](https://www.jsdelivr.com/package/gh/ignatiusmb/scramble)
+# Scramble &middot; ![bundle size](https://img.shields.io/bundlephobia/minzip/@ignatiusmb/scramble.svg?label=minzip&style=popout) [![version](https://img.shields.io/npm/v/@ignatiusmb/scramble.svg?style=popout)](https://www.npmjs.com/package/@ignatiusmb/scramble)
 
-<blockquote align=center>
-  <em>Scramble</em> is a JavaScript animation library for texts.<br>
-  Quick setup with minimal hassle.
-</blockquote>
-
-<p align=center>
-  <a href="https://scramble.js.org">Homepage</a>
-  &nbsp;&middot;&nbsp;
-  <a href="https://scramble.js.org/documentation">Documentation</a>
-  &nbsp;&middot;&nbsp;
-  <a href="https://scramble.js.org/demos">Demos and examples</a>
-</p>
+A JavaScript animation library for texts.
 
 ```javascript
-const scramble = require('@ignatiusmb/scramble')
-scramble(document.querySelector('#yourElement')).run() // single element
+import { scramble } from '@ignatiusmb/scramble';
 
-scramble(document.querySelectorAll('.scramble-group')) // multiple elements
+scramble(document.querySelector('...')).run();
 ```
 
 ## Installation
 
-### via NPM
-
-```sh
-$ npm install @ignatiusmb/scramble
+```bash
+pnpm add @ignatiusmb/scramble
 ```
 
-### via UNPKG
+***
 
-```html
-<script src="https://unpkg.com/@ignatiusmb/scramble@3.0.1/lib/scramble.min.js"></script>
-```
-
-### via jsDelivr
-
-```html
-<script src="https://cdn.jsdelivr.net/gh/ignatiusmb/scramble@3.0.1/lib/scramble.min.js"></script>
-```
-
----
-
-<h3 align="center">
-Scramble is <a href=LICENSE>MIT licensed</a>
-</h3>
-
----
-
-<p align="center">
-  <a href="https://ignatiusmb.github.io">ignatiusmb.io</a>
-  &middot;
-  <a href="https://www.imbagus.com">imbagus.com</a>
-  &middot;
-  <a href="https://github.com/ignatiusmb">GitHub</a>
-  &middot;
-  <a href="https://gitlab.com/ignatiusmb">GitLab</a>
-</p>
+<h3 align="center"><pre>@ignatiusmb/scramble | <a href="LICENSE">MIT License</a></pre></h3>

@@ -1,0 +1,3 @@
+{
+	"extends": "mauss/tsconfig.json"
+}
