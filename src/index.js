@@ -1,17 +1,20 @@
-import * as VX from './options.js';
+import { INTERVAL } from './options.js';
 import { decode, jumble } from './utils.js';
 
-export function disorder(el: HTMLElement) {
-	const original = el.textContent || '';
+/**
+ * @param {HTMLElement} element node anchor
+ */
+export function disorder(element) {
+	const original = element.textContent || '';
 	const total = original.length;
 
-	let interval = setInterval(execute, VX.INTERVAL);
+	let interval = setInterval(execute, INTERVAL);
 	let running = true;
 	return {
 		original,
 		start() {
 			if (running) return;
-			running = !!(interval = setInterval(execute, VX.INTERVAL));
+			running = !!(interval = setInterval(execute, INTERVAL));
 		},
 		stop() {
 			running = !!(interval && void clearInterval(interval));
@@ -19,13 +22,18 @@ export function disorder(el: HTMLElement) {
 	};
 
 	function execute() {
-		el.textContent = jumble(total);
+		element.textContent = jumble(total);
 	}
 }
 
-export function successive(elements: NodeListOf<HTMLElement>) {
+/**
+ * @param {NodeListOf<HTMLElement>} elements node list
+ */
+export function successive(elements) {
 	const list = Array.from(elements, (el) => scramble(el));
-	function execute(idx: number) {
+
+	/** @param {number} idx */
+	function execute(idx) {
 		if (idx >= list.length) return;
 		function check() {
 			list[idx].finished ? execute(idx + 1) : setTimeout(check, 1000);
@@ -37,10 +45,13 @@ export function successive(elements: NodeListOf<HTMLElement>) {
 	};
 }
 
-interface ScrambleOptions {}
-export function scramble(node: HTMLElement, {}: ScrambleOptions = {}) {
+/**
+ * @param {HTMLElement} node element anchor
+ */
+export function scramble(node) {
 	let executed = false;
-	let timer: NodeJS.Timeout;
+	/** @type {number} */
+	let timer;
 
 	let index = 0;
 	const original = node.textContent || '';
@@ -51,7 +62,7 @@ export function scramble(node: HTMLElement, {}: ScrambleOptions = {}) {
 		timer = setInterval(() => {
 			if (index >= original.length) clearInterval(timer);
 			node.textContent = decode(original, index);
-		}, VX.INTERVAL);
+		}, INTERVAL);
 
 		if (index++ >= original.length) clearTimeout(timer);
 		else setTimeout(iterate, 432);

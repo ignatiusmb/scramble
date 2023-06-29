@@ -1,15 +1,26 @@
-import { random } from 'mauss/utils';
-
-export function decode(original: string, length: number) {
+/**
+ * @param {string} original
+ * @param {number} length
+ */
+export function decode(original, length) {
 	const text = original.slice(0, length);
 	return text + jumble(original.length - length);
 }
 
-export function jumble(length: number) {
-	return Array.from({ length }, () => String.fromCharCode(random.int(33, 126))).join('');
+/**
+ * @param {number} length
+ */
+export function jumble(length) {
+	return Array.from({ length }, () => {
+		const code = Math.random() * (126 - 33) + 33;
+		return String.fromCharCode(code);
+	}).join('');
 }
 
-export function inViewport(el: HTMLElement) {
+/**
+ * @param {HTMLElement} el
+ */
+export function inViewport(el) {
 	const rect = el.getBoundingClientRect();
 	const { innerWidth, innerHeight } = window;
 	return (

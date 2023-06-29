@@ -14,10 +14,10 @@
 </p>
 
 ```javascript
-const scramble = require('@ignatiusmb/scramble')
-scramble(document.querySelector('#yourElement')).run() // single element
+const scramble = require('@ignatiusmb/scramble');
+scramble(document.querySelector('#yourElement')).run(); // single element
 
-scramble(document.querySelectorAll('.scramble-group')) // multiple elements
+scramble(document.querySelectorAll('.scramble-group')); // multiple elements
 ```
 
 ## Installation
