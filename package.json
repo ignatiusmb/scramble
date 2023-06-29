@@ -1,8 +1,8 @@
 {
   "name": "@ignatiusmb/scramble",
-  "author": "Ignatius Bagus",
-  "description": "Scramble text and emulate decoding sequence",
   "version": "4.0.0",
+  "description": "Scramble text and emulate decoding sequence",
+  "author": "Ignatius Bagus",
   "license": "MIT",
   "type": "module",
   "scripts": {
